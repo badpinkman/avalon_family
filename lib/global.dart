@@ -9,10 +9,10 @@ class Global {
 
     // 工具类
     await Storage().init();
-    
+
     await Future.wait([
       Get.putAsync<ConfigService>(() async => await ConfigService().init()),
-    ]).whenComplete(() {
-    });
+    ]).whenComplete(() {});
+    Get.put<HttpService>(HttpService());
   }
 }
