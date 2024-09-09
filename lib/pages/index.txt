@@ -1,6 +1,3 @@
-library pages;
-
-// export './xxxx.dart';
 export 'my/language/index.dart';
 export 'my/my_index/index.dart';
 export 'my/theme/index.dart';
