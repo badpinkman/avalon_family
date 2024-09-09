@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ThemeColor {
+  static Color get background => Get.theme.colorScheme.background;
+  static Brightness get brightness => Get.theme.colorScheme.brightness;
+
   static get primary => Theme.of(Get.context!).colorScheme.primary;
   static get onPrimary => Theme.of(Get.context!).colorScheme.onPrimary;
   static get primaryContainer =>

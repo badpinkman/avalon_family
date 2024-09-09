@@ -21,12 +21,16 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return GetMaterialApp(
             title: 'Avalon Family',
+            // 主题模式
+            themeMode:
+                ConfigService.to.isDarkModel ? ThemeMode.dark : ThemeMode.light,
+            // 主题
+            theme: AppTheme.light,
+            // Dark主题
+            darkTheme: AppTheme.dark,
             // 默认的跳转动画
             defaultTransition: Transition.rightToLeft,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
+
             // 路由
             initialRoute: RouteNames.stylesStylesIndex,
             getPages: RoutePages.list,

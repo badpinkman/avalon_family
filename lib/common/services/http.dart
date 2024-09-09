@@ -193,6 +193,49 @@ class DioInterceptors extends Interceptor {
     }
   }
 
+  /// 退出并重新登录
+  // Future<void> _errorNoAuthLogout() async {
+  //   await UserService.to.logout();
+  //   Get.toNamed(RouteNames.systemLogin);
+  // }
+
+  // @override
+  // Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
+  //   final exception = HttpException(err.message);
+  //   switch (err.type) {
+  //     case DioErrorType.response: // 服务端自定义错误体处理
+  //       {
+  //         // final response = err.response;
+  //         // final errorMessage = ErrorMessageModel.fromJson(response?.data);
+  //         // switch (errorMessage.statusCode) {
+  //         //   case 401:
+  //         //     _errorNoAuthLogout();
+  //         //     break;
+  //         //   case 404:
+  //         //     break;
+  //         //   case 500:
+  //         //     break;
+  //         //   case 502:
+  //         //     break;
+  //         //   default:
+  //         //     break;
+  //         // }
+  //         // Loading.error(errorMessage.message);
+  //       }
+  //       break;
+  //     case DioErrorType.other:
+  //       break;
+  //     case DioErrorType.cancel:
+  //       break;
+  //     case DioErrorType.connectTimeout:
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   err.error = exception;
+  //   handler.next(err);
+  // }
+
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     String? errorMessage;
