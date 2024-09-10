@@ -73,7 +73,7 @@ class HomePage extends GetView<HomeController> {
             crossAxisCount: 2, // 每行显示两个元素
             crossAxisSpacing: 4.0,
             mainAxisSpacing: 4.0,
-            childAspectRatio: 1.4,
+            childAspectRatio: 1.3,
           ),
           itemCount: controller.nano3List.length,
           itemBuilder: (context, index) {
