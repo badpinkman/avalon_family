@@ -20,8 +20,8 @@ class MiniMachineModel {
    */
 
   int? id;
-  String? wifiSsid;
-  String? wifiIp;
+  String? ssid;
+  String? ip;
   String? remark;
   bool? online;
   String? machineNo;
@@ -37,8 +37,8 @@ class MiniMachineModel {
 
   MiniMachineModel({
     this.id,
-    this.wifiSsid,
-    this.wifiIp,
+    this.ssid,
+    this.ip,
     this.remark,
     this.online,
     this.machineNo,
@@ -55,8 +55,8 @@ class MiniMachineModel {
 
   MiniMachineModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    wifiSsid = json['wifiSsid'];
-    wifiIp = json['wifiIp'];
+    ssid = json['ssid'];
+    ip = json['ip'];
     remark = json['remark'];
     online = json['online'];
     machineNo = json['machineNo'];
@@ -74,8 +74,8 @@ class MiniMachineModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['wifiSsid'] = wifiSsid;
-    data['wifiIp'] = wifiIp;
+    data['ssid'] = ssid;
+    data['ip'] = ip;
     data['remark'] = remark;
     data['online'] = online;
     data['machineNo'] = machineNo;

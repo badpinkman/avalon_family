@@ -58,29 +58,9 @@ class Nano3MachineDao implements INano3MachineList, ITable {
   Future<List<Nano3MachineModel>> getNano3MachineList({
     int pageIndex = 1,
     int pageSize = 20,
-    String? searchIp,
   }) async {
     var offset = (pageIndex - 1) * pageSize;
-
     StringBuffer where = StringBuffer();
-
-    if (searchIp != null && searchIp.isNotEmpty && !searchIp.contains(',')) {
-      where.write(" and ip like '%$searchIp%' ");
-    }
-
-    if (searchIp != null && searchIp.isNotEmpty && searchIp.contains(',')) {
-      List<String> ipList = searchIp.split(',');
-      where.write(" and ip in (");
-      StringBuffer sb = StringBuffer();
-      for (var value in ipList) {
-        sb.write("'$value'");
-        if (value != ipList.last) {
-          sb.write(',');
-        }
-      }
-      where.write("${sb.toString()})");
-    }
-
     String sql =
         'select * from $tableName $where order by id asc limit $pageSize offset $offset';
     Logger.d('要查询的SQL: $sql');
