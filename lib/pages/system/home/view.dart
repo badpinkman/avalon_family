@@ -1,6 +1,7 @@
 import 'package:avalon_family/common/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'index.dart';
@@ -57,7 +58,7 @@ class HomePage extends GetView<HomeController> {
         .toRow(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
         )
-        .padding(left: 15, right: 10, bottom: 10);
+        .padding(left: 20, right: 15, bottom: 10);
   }
 
   /// 构建机器卡片列表
@@ -123,10 +124,17 @@ class HomePage extends GetView<HomeController> {
         const Spacer(),
         Text(nano3.online ?? false ? '' : '离线'.tr).padding(right: 5),
       ].toRow().padding(top: 10, left: 5),
-    ].toColumn().padding(left: 15, right: 15, bottom: 15, top: 10).card(
+    ]
+        .toColumn()
+        .padding(left: 15, right: 15, bottom: 15, top: 10)
+        .width(
+          0.45.sw,
+        )
+        .card(
           elevation: 1,
           color: Theme.of(context).colorScheme.onPrimary,
-        );
+        )
+        .center();
   }
 
   /// 构建每一个Mini卡片
@@ -153,10 +161,17 @@ class HomePage extends GetView<HomeController> {
         const Spacer(),
         Text(mini.online ?? false ? '' : '离线'.tr).padding(right: 5),
       ].toRow().padding(top: 10, left: 5),
-    ].toColumn().padding(left: 15, right: 15, bottom: 15, top: 10).card(
+    ]
+        .toColumn()
+        .padding(left: 15, right: 15, bottom: 15, top: 10)
+        .width(
+          0.93.sw,
+        )
+        .card(
           elevation: 1,
           color: Theme.of(context).colorScheme.onPrimary,
-        );
+        )
+        .center();
   }
 
   /// 构建Mini卡片列表
