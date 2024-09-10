@@ -47,13 +47,20 @@ class HomePage extends GetView<HomeController> {
         '我的Avalon设备'.tr,
         style: AppTextStyles.titleLarge,
       ),
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          Icons.add_circle_outline_sharp,
-          size: 25,
+      <Widget>[
+        ButtonX.icon(
+          minSize: const Size(28, 28),
+          Icons.bug_report_outlined,
+          onPressed: () => Get.toNamed(RouteNames.stylesStylesIndex),
         ),
-      )
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.add_circle_outline_sharp,
+            size: 25,
+          ),
+        )
+      ].toRow(),
     ]
         .toRow(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
