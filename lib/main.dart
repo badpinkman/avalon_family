@@ -1,3 +1,4 @@
+import 'package:avalon_family/pages/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
             defaultTransition: Transition.rightToLeft,
 
             // 路由
-            initialRoute: RouteNames.stylesStylesIndex,
+            // initialRoute: RouteNames.stylesStylesIndex,
             getPages: RoutePages.list,
             navigatorObservers: [RoutePages.observer],
             // 国际化配置
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
             fallbackLocale: Translation.fallbackLocale,
             supportedLocales: Translation.supportedLocales,
             localizationsDelegates: Translation.localizationsDelegates,
-            home: const MyHomePage(title: 'Flutter Demo Home Page'),
+            home: const MainPage(),
           );
         });
   }

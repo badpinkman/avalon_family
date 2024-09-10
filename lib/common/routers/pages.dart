@@ -82,6 +82,10 @@ class RoutePages {
       page: () => const MainPage(),
     ),
     GetPage(
+      name: RouteNames.systemSettings,
+      page: () => const SettingsPage(),
+    ),
+    GetPage(
       name: RouteNames.systemSplash,
       page: () => const SplashPage(),
     ),

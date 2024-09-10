@@ -19,6 +19,7 @@ export 'styles/text_form/index.dart';
 export 'system/home/index.dart';
 export 'system/login/index.dart';
 export 'system/main/index.dart';
+export 'system/settings/index.dart';
 export 'system/splash/index.dart';
 export 'system/user_agreement/index.dart';
 export 'system/welcome/index.dart';

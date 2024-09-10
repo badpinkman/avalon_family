@@ -9,6 +9,11 @@ class AppTheme {
     colorScheme: lightColorScheme,
     useMaterial3: false,
     fontFamily: "AzoSans",
+    navigationBarTheme: NavigationBarThemeData(
+      labelTextStyle: MaterialStateProperty.all(
+        TextStyle(color: lightColorScheme.primary), // 修改为你想要的颜色
+      ),
+    ),
   );
 
   /// 暗色
@@ -16,5 +21,10 @@ class AppTheme {
     colorScheme: darkColorScheme,
     useMaterial3: false,
     fontFamily: "AzoSans",
+    navigationBarTheme: NavigationBarThemeData(
+      labelTextStyle: MaterialStateProperty.all(
+        TextStyle(color: lightColorScheme.primary), // 修改为你想要的颜色
+      ),
+    ),
   );
 }

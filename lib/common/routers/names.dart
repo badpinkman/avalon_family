@@ -1,4 +1,3 @@
-
 class RouteNames {
   static const main = '/';
   static const myLanguage = '/my_language';
@@ -19,6 +18,7 @@ class RouteNames {
   static const systemHome = '/system_home';
   static const systemLogin = '/system_login';
   static const systemMain = '/system_main';
+  static const systemSettings = '/system_settings';
   static const systemSplash = '/system_splash';
   static const systemUserAgreement = '/system_user_agreement';
   static const systemWelcome = '/system_welcome';
