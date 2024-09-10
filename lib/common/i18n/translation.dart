@@ -11,7 +11,6 @@ class Translation extends Translations {
   static const supportedLocales = [
     Locale('zh'),
     Locale('en'),
-    Locale('es'),
   ];
 
   @override
