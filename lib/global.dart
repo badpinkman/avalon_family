@@ -14,6 +14,7 @@ class Global {
 
     await Future.wait([
       Get.putAsync<ConfigService>(() async => await ConfigService().init()),
+      Get.putAsync<DbService>(() async => await DbService().init()),
     ]).whenComplete(() {});
     Get.put<HttpService>(HttpService());
   }

@@ -8,4 +8,7 @@ class Constants {
   static const wpApiBaseUrl = 'https://wpapi.ducafecat.tech';
 
   static const storageThemeCode = 'theme_code';
+
+  /// 初始化数据库的机器日志表名
+  static const String initDbName = 'avalon_machine_db';
 }

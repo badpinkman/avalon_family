@@ -1,3 +1,4 @@
+import 'package:avalon_family/common/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,9 +9,12 @@ class HomePage extends GetView<HomeController> {
 
   // 主视图
   Widget _buildView() {
-    return const Center(
-      child: Text("HomePage"),
-    );
+    return <Widget>[
+      // title txt
+      buildHeader(),
+      // 构建机器卡片
+      buildMachineCard(),
+    ].toColumn();
   }
 
   @override
@@ -19,13 +23,36 @@ class HomePage extends GetView<HomeController> {
       init: HomeController(),
       id: "home",
       builder: (_) {
-        return Scaffold(
-          // appBar: AppBar(title: const Text("home")),
-          body: SafeArea(
-            child: _buildView(),
-          ),
+        return SafeArea(
+          child: _buildView(),
         );
       },
     );
+  }
+
+  /// 构建Header
+  Widget buildHeader() {
+    return <Widget>[
+      Text(
+        '我的Avalon设备'.tr,
+        style: AppTextStyles.titleLarge,
+      ),
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.add_circle_outline_sharp,
+          size: 25,
+        ),
+      )
+    ]
+        .toRow(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        )
+        .padding(left: 20, right: 10);
+  }
+
+  /// 构建机器卡片
+  Widget buildMachineCard() {
+    return SizedBox();
   }
 }
