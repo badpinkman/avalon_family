@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:avalon_family/common/index.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class DBManager {
   /// 多实例
@@ -32,11 +32,25 @@ class DBManager {
 
   Future<DBManager> _init() async {
     final supportDirectory = await getApplicationSupportDirectory();
-
-    var platform = Platform.operatingSystem;
+    String platform = Platform.operatingSystem;
     String path = '${supportDirectory.path}\\$_dbName';
-    path = await getDatabasesPath();
-    _db = await openDatabase(_dbName);
+    if (Platform.isWindows || Platform.isLinux) {
+      sqfliteFfiInit();
+      _db = await databaseFactoryFfi.openDatabase(_dbName);
+    }
+
+    ///else if (Platform.isLinux && false) {
+    /// 不进入该判断 Linux与Windows共用同一个方法
+    /// TODO Linux @See https://pub.dev/packages/sqflite_common_ffi
+    /// 通过var platform = Platform.operatingSystem; 查询当前操作系统
+    /// 需要测试上方Windows的判断, 通过查看源码注释, 显示已经支持Linux
+    /// Logger.log('当前操作系统: [$platform] 暂时不支持数据库操作');
+    /// throw Exception('当前操作系统: [$platform] 暂时不支持数据库操作');
+    ///}
+    else {
+      path = await getDatabasesPath();
+      _db = await openDatabase(_dbName);
+    }
     Logger.d(
         '当前操作系统: [$platform] 数据库初始化完毕: db var ${await _db.getVersion()} path = $path');
     return this;

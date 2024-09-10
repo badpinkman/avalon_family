@@ -58,7 +58,7 @@ class HomePage extends GetView<HomeController> {
         .toRow(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
         )
-        .padding(left: 20, right: 15, bottom: 10);
+        .padding(left: 15, right: 15, bottom: 15, top: 15);
   }
 
   /// 构建机器卡片列表
@@ -72,7 +72,7 @@ class HomePage extends GetView<HomeController> {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, // 每行显示两个元素
             crossAxisSpacing: 4.0,
-            mainAxisSpacing: 4.0,
+            mainAxisSpacing: 2.0,
             childAspectRatio: 1.3,
           ),
           itemCount: controller.nano3List.length,
@@ -92,6 +92,39 @@ class HomePage extends GetView<HomeController> {
               ],
               child: buildNano3Item(nano3, context).onTap(() {
                 Logger.d('普通点击 : ${nano3.id} ');
+              }),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  /// 构建Mini卡片列表
+  Widget buildMiniMachineCard(BuildContext context) {
+    return GetBuilder<HomeController>(
+      id: "miniCardList",
+      builder: (_) {
+        return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: controller.miniList.length,
+          itemBuilder: (context, index) {
+            MiniMachineModel mini = controller.miniList[index];
+            return CupertinoContextMenu(
+              actions: <Widget>[
+                CupertinoContextMenuAction(
+                  onPressed: () {
+                    Logger.d('操作了删除按钮 : ${mini.id}');
+                    Navigator.pop(context);
+                  },
+                  isDestructiveAction: true,
+                  trailingIcon: CupertinoIcons.delete,
+                  child: Text('删除'.tr),
+                ),
+              ],
+              child: buildMiniItem(mini, context).onTap(() {
+                Logger.d('普通点击 : ${mini.id} ');
               }),
             );
           },
@@ -125,10 +158,13 @@ class HomePage extends GetView<HomeController> {
         Text(nano3.online ?? false ? '' : '离线'.tr).padding(right: 5),
       ].toRow().padding(top: 10, left: 5),
     ]
-        .toColumn()
+        .toColumn(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+        )
         .padding(left: 15, right: 15, bottom: 15, top: 10)
         .width(
-          0.45.sw,
+          0.46.sw,
         )
         .card(
           elevation: 1,
@@ -162,48 +198,18 @@ class HomePage extends GetView<HomeController> {
         Text(mini.online ?? false ? '' : '离线'.tr).padding(right: 5),
       ].toRow().padding(top: 10, left: 5),
     ]
-        .toColumn()
+        .toColumn(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+        )
         .padding(left: 15, right: 15, bottom: 15, top: 10)
         .width(
-          0.93.sw,
+          0.95.sw,
         )
         .card(
           elevation: 1,
           color: Theme.of(context).colorScheme.onPrimary,
         )
-        .center();
-  }
-
-  /// 构建Mini卡片列表
-  Widget buildMiniMachineCard(BuildContext context) {
-    return GetBuilder<HomeController>(
-      id: "miniCardList",
-      builder: (_) {
-        return ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: controller.miniList.length,
-          itemBuilder: (context, index) {
-            MiniMachineModel mini = controller.miniList[index];
-            return CupertinoContextMenu(
-              actions: <Widget>[
-                CupertinoContextMenuAction(
-                  onPressed: () {
-                    Logger.d('操作了删除按钮 : ${mini.id}');
-                    Navigator.pop(context);
-                  },
-                  isDestructiveAction: true,
-                  trailingIcon: CupertinoIcons.delete,
-                  child: Text('删除'.tr),
-                ),
-              ],
-              child: buildMiniItem(mini, context).onTap(() {
-                Logger.d('普通点击 : ${mini.id} ');
-              }),
-            );
-          },
-        ).paddingOnly(bottom: 5);
-      },
-    );
+        .marginOnly(bottom: 5);
   }
 }
