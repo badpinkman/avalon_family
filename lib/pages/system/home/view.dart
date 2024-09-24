@@ -48,10 +48,12 @@ class HomePage extends GetView<HomeController> {
         style: AppTextStyles.titleLarge,
       ),
       <Widget>[
-        ButtonX.icon(
-          minSize: const Size(28, 28),
-          Icons.bug_report_outlined,
+        IconButton(
           onPressed: () => Get.toNamed(RouteNames.stylesStylesIndex),
+          icon: const Icon(
+            Icons.bug_report_outlined,
+            size: 25,
+          ),
         ),
         IconButton(
           onPressed: () {},
@@ -68,7 +70,7 @@ class HomePage extends GetView<HomeController> {
         .padding(left: 15, right: 15, bottom: 15, top: 15);
   }
 
-  /// 构建机器卡片列表
+  /// 构建Nano3卡片列表
   Widget buildNano3MachineCard(BuildContext context) {
     return GetBuilder<HomeController>(
       id: "nano3CardList",
@@ -99,39 +101,6 @@ class HomePage extends GetView<HomeController> {
               ],
               child: buildNano3Item(nano3, context).onTap(() {
                 Logger.d('普通点击 : ${nano3.id} ');
-              }),
-            );
-          },
-        );
-      },
-    );
-  }
-
-  /// 构建Mini卡片列表
-  Widget buildMiniMachineCard(BuildContext context) {
-    return GetBuilder<HomeController>(
-      id: "miniCardList",
-      builder: (_) {
-        return ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: controller.miniList.length,
-          itemBuilder: (context, index) {
-            MiniMachineModel mini = controller.miniList[index];
-            return CupertinoContextMenu(
-              actions: <Widget>[
-                CupertinoContextMenuAction(
-                  onPressed: () {
-                    Logger.d('操作了删除按钮 : ${mini.id}');
-                    Navigator.pop(context);
-                  },
-                  isDestructiveAction: true,
-                  trailingIcon: CupertinoIcons.delete,
-                  child: Text('删除'.tr),
-                ),
-              ],
-              child: buildMiniItem(mini, context).onTap(() {
-                Logger.d('普通点击 : ${mini.id} ');
               }),
             );
           },
@@ -178,6 +147,39 @@ class HomePage extends GetView<HomeController> {
           color: Theme.of(context).colorScheme.onPrimary,
         )
         .center();
+  }
+
+  /// 构建Mini卡片列表
+  Widget buildMiniMachineCard(BuildContext context) {
+    return GetBuilder<HomeController>(
+      id: "miniCardList",
+      builder: (_) {
+        return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: controller.miniList.length,
+          itemBuilder: (context, index) {
+            MiniMachineModel mini = controller.miniList[index];
+            return CupertinoContextMenu(
+              actions: <Widget>[
+                CupertinoContextMenuAction(
+                  onPressed: () {
+                    Logger.d('操作了删除按钮 : ${mini.id}');
+                    Navigator.pop(context);
+                  },
+                  isDestructiveAction: true,
+                  trailingIcon: CupertinoIcons.delete,
+                  child: Text('删除'.tr),
+                ),
+              ],
+              child: buildMiniItem(mini, context).onTap(() {
+                Logger.d('普通点击 : ${mini.id} ');
+              }),
+            );
+          },
+        );
+      },
+    );
   }
 
   /// 构建每一个Mini卡片
